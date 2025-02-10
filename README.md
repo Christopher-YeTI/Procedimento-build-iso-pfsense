@@ -249,19 +249,15 @@ contrab utiliza "vi" para editar o arquivo, pressiona "a" para escrever, ESC par
 
 ### Iniciar a Build da ports
 - ./build.sh --update-pkg-repo -  Este comando vai compilar todos os ports "selecionados" para o pfSense, este procedimento pode levar cerca de 5 a 6 horas
-Para acompanharmos todo o procedimento e baixar log's que podemo nos ajudar a resolver possíveis problemas na compilação dos ports, na WEB informe o IP do seu Servidor FreeBSD
-
-![image](https://github.com/user-attachments/assets/85b6206d-f563-49f8-87ae-6c7b3169c50f)
-
-Podemos acompanhar todo o progresso dos PORTS acessando na WEB o IP do nosso FreeBSD http://192.168.15.163/
+Para acompanharmos todo o procedimento e baixar log's que podem nos ajudar a resolver possíveis problemas na compilação dos ports, na WEB informe o IP do seu Servidor FreeBSD http://192.168.15.163/
 
 ![image](https://github.com/user-attachments/assets/9f542143-8e9e-4d82-9d8b-2e5ecac3eca3)
 
 ![image](https://github.com/user-attachments/assets/34dc52d6-072d-4d6b-aa93-55c08db9b7b4)
 
-![image](https://github.com/user-attachments/assets/78efb47a-3255-4c2b-a925-57867e77a7a5)
+![image](https://github.com/user-attachments/assets/85b6206d-f563-49f8-87ae-6c7b3169c50f)
 
-Ao navegar nos log's conseguimos identificar os PORTS com erros e baixar os log's para trata-los
+![image](https://github.com/user-attachments/assets/78efb47a-3255-4c2b-a925-57867e77a7a5)
 
 ### Algumas causas raízes possíveis de problemas na compilação dos PORTS: 
 - Você está tentando construir uma versão desatualizada do pfSense e alguns arquivos "dist" não estão mais disponíveis no [distcache oficial do FreeBSD](http://distcache.FreeBSD.org/), resultando em erros na etapa "fetch"
