@@ -54,42 +54,48 @@ Siga os comandos(aguarde a finalização de cada um):
 
 Agora vamos realizar o login da nossa conta do GITHUB em nosso BASH com os seguintes comandos:
 
-git config --global user.name "Christopher-YeTI"
+    # git config --global user.name "Christopher-YeTI"
 
-git config --global user.email christopher@yeti.tec.br
+    # git config --global user.email christopher@yeti.tec.br
 
 se for solicitando uma senha, informe a key gerada no GITHUB Web.
 
 ---TUDO PRONTO PARA EDITAR OS ARQUIVOS---
+
 ### FreeBSD Source
-- Dentro da pasta Desktop\libreSense\FreeBSD-src\ execute o GIT Bash, em seguida os comandos:
+Dentro da pasta Desktop\libreSense\FreeBSD-src\ execute o GIT Bash, em seguida os comandos:
 
-git branch RELENG_2_7_3
+    # git branch RELENG_2_7_3
 
-git checkout RELENG_2_7_3
+    # git checkout RELENG_2_7_3
 
 Isso vai criar uma nova BRANCH em nosso repositório e com o checkout vamos mudar para ela, altere os arquivos a seguir:
-- Na pasta "/release/conf/", renomear os arquivos que comecem com "pfSense" para "libreSense"(exemplo, "pfSense_install_src.conf" => "libreSense_install_src.conf")
+Na pasta "/release/conf/", renomear os arquivos que comecem com "pfSense" para "libreSense"(exemplo, "pfSense_install_src.conf" => "libreSense_install_src.conf")
 
 ![image](https://github.com/user-attachments/assets/2586f558-5b31-4d6c-a5f7-13cd3233947d)
 
-- Renomeie o arquivo "/sys/amd64/conf/pfSense" to "/sys/amd64/conf/libreSense"
+Renomeie o arquivo "/sys/amd64/conf/pfSense" to "/sys/amd64/conf/libreSense"
 
 ![image](https://github.com/user-attachments/assets/16badb26-207d-41b4-9123-3df31ae51e14)
 
-- Edite o arquivo "/tools/tools/crypto/Makefile" removendo as palavras "cryptotest cryptostats" do comando "PROGS"
+Edite o arquivo "/tools/tools/crypto/Makefile" removendo as palavras "cryptotest cryptostats" do comando "PROGS"
 
 ![image](https://github.com/user-attachments/assets/095c1e2b-166a-4894-8612-3a4299414950)
 
-- Execute os seguintes comandos no GIT BASH:
-git add . && git commit -m “Alterações para nova versão de compilação”
-git push origin RELENG_2_7_3
+Execute os seguintes comandos no GIT BASH:
+
+    # git add . && git commit -m “Alterações para nova versão de compilação”
+
+    # git push origin RELENG_2_7_3
 
 ### FreeBSD Ports
-- Dentro da pasta Desktop\libreSense\FreeBSD-ports\ execute o GIT Bash, em seguida os comandos:
-git branch RELENG_2_7_3
-git checkout RELENG_2_7_3
-- Edite o arquivo "/sysutils/pfSense-upgrade/Makefile" removendo a linha "RUN_DEPENDS+= pfSense-repoc>=0:sysutils/pfSense-repoc"
+Dentro da pasta Desktop\libreSense\FreeBSD-ports\ execute o GIT Bash, em seguida os comandos:
+
+    # git branch RELENG_2_7_3
+
+    # git checkout RELENG_2_7_3
+
+Edite o arquivo "/sysutils/pfSense-upgrade/Makefile" removendo a linha "RUN_DEPENDS+= pfSense-repoc>=0:sysutils/pfSense-repoc"
 
 ![image](https://github.com/user-attachments/assets/ab78e9ee-8139-460a-99a5-79d876a3e6f6)
 
