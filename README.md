@@ -266,6 +266,14 @@ Para acompanharmos todo o procedimento e baixar log's que podem nos ajudar a res
 
 ### Você precisa construir **TODOS** PORTS antes de prosseguir para a próxima etapa. Se não quiser criar uma PORT, você pode excluí-la removendo-a em [poudriere_bulk).](https://github.com/Christopher-YeTI/pfsense/blob/master/tools/conf/pfPorts/poudriere_bulk)
 
+Comando para procurar determinado arquivo contento a informação no nome:
+
+- find / -name "pfSense-pkg-zabbix-agent" 2>/dev/null 
+
+Comando para procurar uma palavra dentro de um arquivo no seguinte caminho:
+
+- grep -rni "pear-Auth_RADIUS@php84" /usr/local/poudriere/ports/
+
 -------------------------------------------------------------------não consigo progredir------------------------------------------------------------------------------
 
 ### Build kernel and create ISO
