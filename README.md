@@ -53,15 +53,21 @@ git clone https://github.com/Christopher-YeTI/FreeBSD-ports.git
 git clone https://github.com/Christopher-YeTI/FreeBSD-src.git
 
 Agora vamos realizar o login da nossa conta do GITHUB em nosso BASH com os seguintes comandos:
+
 git config --global user.name "Christopher-YeTI"
+
 git config --global user.email christopher@yeti.tec.br
+
 se for solicitando uma senha, informe a key gerada no GITHUB Web.
 
 ---TUDO PRONTO PARA EDITAR OS ARQUIVOS---
 ### FreeBSD Source
 - Dentro da pasta Desktop\libreSense\FreeBSD-src\ execute o GIT Bash, em seguida os comandos:
+
 git branch RELENG_2_7_3
+
 git checkout RELENG_2_7_3
+
 Isso vai criar uma nova BRANCH em nosso repositório e com o checkout vamos mudar para ela, altere os arquivos a seguir:
 - Na pasta "/release/conf/", renomear os arquivos que comecem com "pfSense" para "libreSense"(exemplo, "pfSense_install_src.conf" => "libreSense_install_src.conf")
 
