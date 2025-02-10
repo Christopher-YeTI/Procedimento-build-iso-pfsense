@@ -99,64 +99,70 @@ Edite o arquivo "/sysutils/pfSense-upgrade/Makefile" removendo a linha "RUN_DEPE
 
 ![image](https://github.com/user-attachments/assets/ab78e9ee-8139-460a-99a5-79d876a3e6f6)
 
-- Edite o arquivo "/security/pfSense/pkg-plist" removendo todas as linhas que comecem com "%%DATADIR%%/keys"
+Edite o arquivo "/security/pfSense/pkg-plist" removendo todas as linhas que comecem com "%%DATADIR%%/keys"
 
 ![image](https://github.com/user-attachments/assets/64d0ac1f-5cd2-4f98-9af1-f505b21073bf)
 
-- Edite o arquivo "/sysutils/pfSense-repo/Makefile" alterando o "srv" para "none"
+Edite o arquivo "/sysutils/pfSense-repo/Makefile" alterando o "srv" para "none"
 
 ![image](https://github.com/user-attachments/assets/58e1b744-6c6a-4777-a8aa-5a3fbb83af81)
 
-- Edite o arquivo "/security/pfSense/Makefile"
+Edite o arquivo "/security/pfSense/Makefile"
   - Renomeie a variavel "USE_GITLAB" >> "USE_GITHUB"
   - Renomeie a variavel "GL_ACCOUNT" >> "GH_ACCOUNT" Aqui devemos informar nosso usuário do GITHUB (Christopher-YeTI)
   - Renomeie a variavel "GL_COMMIT" >> "GH_TAGNAME"
   - Remova a linha "GL_SITE= https://gitlab.netgate.com"
   - Remova a linha "pfSense-gnid>=0:security/pfSense-gnid \" da varavel "RUN_DEPENDS", se, ela existir
-- Execute os seguintes comandos no GIT BASH:
-git add . && git commit -m “Alterações para nova versão de compilação”
-git push origin RELENG_2_7_3
+
+Execute os seguintes comandos no GIT BASH:
+
+    # git add . && git commit -m “Alterações para nova versão de compilação”
+
+    # git push origin RELENG_2_7_3
 
 ### pfSense GUI
-- Dentro da pasta Desktop\libreSense\pfSense\ execute o GIT Bash, em seguida os comandos:
-git branch RELENG_2_7_3
-git checkout RELENG_2_7_3
-- Na pasta "/tools/templates/pkg_repos/" renomeie o arquivo "pfSense-repo.conf" to "libreSense-repo.conf"
+Dentro da pasta Desktop\libreSense\pfSense\ execute o GIT Bash, em seguida os comandos:
+
+    # git branch RELENG_2_7_3
+
+    # git checkout RELENG_2_7_3
+
+Na pasta "/tools/templates/pkg_repos/" renomeie o arquivo "pfSense-repo.conf" to "libreSense-repo.conf"
 
 ![image](https://github.com/user-attachments/assets/1e324e6d-f95c-4839-9f73-3ca8ed5c0d5b)
 
-- Edite o arquivo "/src/etc/inc/globals.inc" altere o "product_name" para "libreSense", e "pkg_prefix" para "libreSense-pkg-"
+Edite o arquivo "/src/etc/inc/globals.inc" altere o "product_name" para "libreSense", e "pkg_prefix" para "libreSense-pkg-"
 
 ![image](https://github.com/user-attachments/assets/9e5e841c-6f01-4fcd-abea-fd23f55ba0a2)
 
 ![image](https://github.com/user-attachments/assets/56695890-a2e8-4800-a932-2000d9461816)
 
-- Na pasta "/src/usr/local/share/" renomeie a pasta "pfSense" para "libreSense"
+Na pasta "/src/usr/local/share/" renomeie a pasta "pfSense" para "libreSense"
 
 ![image](https://github.com/user-attachments/assets/766ae045-0cce-4ad2-9c69-d38b2ff495d9)
 
-- Na pasta "/src/etc/" renomeie o arquivo "pfSense-ddb.conf" e "pfSense-devd.conf" para "libreSense-ddb.conf" e "libreSense-devd.conf"
+Na pasta "/src/etc/" renomeie o arquivo "pfSense-ddb.conf" e "pfSense-devd.conf" para "libreSense-ddb.conf" e "libreSense-devd.conf"
 
 ![image](https://github.com/user-attachments/assets/7d1d24b8-e5fb-460f-a140-756699c3ce7e)
 
-- Edite o arquivo "/tools/templates/core_pkg/base/pkg-plist" removendo a linha "share/%%PRODUCT_NAME%%/initial.txz"
+Edite o arquivo "/tools/templates/core_pkg/base/pkg-plist" removendo a linha "share/%%PRODUCT_NAME%%/initial.txz"
 
 ![image](https://github.com/user-attachments/assets/eccd801c-27e4-4d1b-b782-60ad533e81c3)
 
-- Edite o arquivo "/tools/builder_common.sh" and "/tools/builder_defaults.sh" aplicando a seguinte "correção":
+Edite o arquivo "/tools/builder_common.sh" and "/tools/builder_defaults.sh" aplicando a seguinte "correção":
 [following pull request](https://github.com/pfsense/pfsense/pull/4721) ([see how](https://www.andrewkroh.com/development/2018/01/17/testing-github-pull-requests-using-git-patches.html))
 
 Caso este documento acima não esteja mais disponível, utilize as versão do meu RELENG_2_7_2, estão com as alterações aplicadas, basta substituí-las
 
 ![image](https://github.com/user-attachments/assets/89c0f3ec-0b86-41b1-8f04-88b5b82450d0)
 
-- Edite o arquivo "/tools/builder_defaults.sh" Removendo "drm2" e "ndis" da varavel "MODULES_OVERRIDE_amd64"
-- Neste mesmo arquivo, altere a informação da variavel "PKG_REPO_BRANCH_RELEASE" para v_2_7_3
+Edite o arquivo "/tools/builder_defaults.sh" Removendo "drm2" e "ndis" da varavel "MODULES_OVERRIDE_amd64"
+Neste mesmo arquivo, altere a informação da variavel "PKG_REPO_BRANCH_RELEASE" para v_2_7_3
 
 ![image](https://github.com/user-attachments/assets/644e674b-0696-410b-8107-f6d94a3d9fd2)
 
 ### Setup gamer
-- A versão de instalação que vamos tentar realizar a build é baseada no FreeBSD 15.0-RELEASE baixe a .iso do mesmo em https://download.freebsd.org/snapshots/amd64/amd64/ISO-IMAGES/15.0/ versão ADM64 disc1.iso, pode ser a mais recente
+A versão de instalação que vamos tentar realizar a build é baseada no FreeBSD 15.0-RELEASE baixe a .iso do mesmo em https://download.freebsd.org/snapshots/amd64/amd64/ISO-IMAGES/15.0/ versão ADM64 disc1.iso, pode ser a mais recente
 
 Recomendações de Hardeware:
 - 26GB de memóriam RAM;
@@ -169,33 +175,35 @@ Instale a versão ZFS
 
 ### Configurando nosso FreeBSD
 Siga os comandos:
- - echo PermitRootLogin yes >> /etc/ssh/sshd_config
- - service sshd restart
+
+    # echo PermitRootLogin yes >> /etc/ssh/sshd_config
+    # service sshd restart
 
 Utilizando uma conexão SSH execute os seguintes comandos:
-- freebsd-update fetch
-- freebsd-update install
-- pkg install -y pkg vim nano emacs git nginx poudriere-devel rsync sudo vmdktool curl qemu-user-static gtar xmlstarlet pkgconf openssl portsnap htop screen wget mmv open-vm-tools py311-gdbm py311-sqlite3 py311-tkinter python3 unbound cmake llvm libffi pkgconf 
-- mkdir -p /var/db/portsnap
-- portsnap fetch extract
-- dd if=/dev/zero of=/root/swap.bin bs=1M count=16384
-- chmod 0600 /root/swap.bin
-- mdconfig -a -t vnode -f /root/swap.bin -u 0 
-- echo 'swapfile="/root/swap.bin"' >> /etc/rc.conf
-- swapon /dev/md0
-- nano /etc/make.conf - informações para conter no arquivo:
+    # freebsd-update fetch
+    # freebsd-update install
+    # pkg install -y pkg vim nano emacs git nginx poudriere-devel rsync sudo vmdktool curl qemu-user-static gtar xmlstarlet pkgconf openssl portsnap htop screen wget mmv open-vm-tools py311-gdbm py311-sqlite3 py311-tkinter python3 unbound cmake llvm libffi pkgconf 
+    # mkdir -p /var/db/portsnap
+    # portsnap fetch extract
+    # dd if=/dev/zero of=/root/swap.bin bs=1M count=16384
+    # chmod 0600 /root/swap.bin
+    # mdconfig -a -t vnode -f /root/swap.bin -u 0 
+    # echo 'swapfile="/root/swap.bin"' >> /etc/rc.conf
+    # swapon /dev/md0
+    # nano /etc/make.conf
 
-    DEFAULT_VERSIONS+=ssl=libressl
-    DEFAULT_VERSIONS+=ssl=openssl
-    DEFAULT_VERSIONS+=perl5=5.36
+Informações:
+            DEFAULT_VERSIONS+=ssl=libressl
+            DEFAULT_VERSIONS+=ssl=openssl
+            DEFAULT_VERSIONS+=perl5=5.36
 
 Para salvar com o editor "nano" pressione CTRL+o, enter para salvar e para sair CTRL+x
 Editor "vi" pressiona "a" para iniciar as escritas, ESC para sair da escrita, pressione ":" "wq" e enter para sair e salvar
 
 Vamos utilizar "janela" chamadas de "Screen", se o acesso via SSH for encerrado de forma inesperada, os comandos em execução não serão perdidos:
-- screen -S build - inicia uma janela
-- screen -ls - lista as janelas
-- sceen -r xxxx - informe o número da janela em xxxx 
+    # screen -S build
+    # screen -ls
+    # sceen -r xxxx 
 
 Com a janela iniciada daremos continuidade aos comandos:
 - cd /usr/local/www/nginx/
