@@ -268,7 +268,7 @@ Para acompanharmos todo o procedimento e baixar log's que podem nos ajudar a res
 
 Comando para procurar determinado arquivo contento a informação no nome:
 
-- find / -name "pfSense-pkg-zabbix-agent" 2>/dev/null 
+- find / -name "radius.c.rej" 2>/dev/null 
 
 Comando para procurar uma palavra dentro de um arquivo no seguinte caminho:
 
