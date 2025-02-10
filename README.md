@@ -6,11 +6,11 @@ Em alguns pontos do repositório pfsense, existe muitas menções à palavra "pf
 
 Crie uma conta no GITHUB, vamos criar um FORK dos seguintes repositórios oficiais da pfSense:
 
-[https://github.com/pfsense/pfsense](https://github.com/pfsense/pfsense.git)
+# [https://github.com/pfsense/pfsense](https://github.com/pfsense/pfsense.git)
 
-[https://github.com/pfsense/freebsd-ports](https://github.com/pfsense/FreeBSD-ports.git)
+# [https://github.com/pfsense/freebsd-ports](https://github.com/pfsense/FreeBSD-ports.git)
 
-[https://github.com/pfsense/freebsd-src](https://github.com/pfsense/FreeBSD-src.git)
+# [https://github.com/pfsense/freebsd-src](https://github.com/pfsense/FreeBSD-src.git)
 
 Para criar um FORK cliquem em:
 
