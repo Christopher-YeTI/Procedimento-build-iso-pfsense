@@ -271,8 +271,8 @@ Para acompanharmos todo o procedimento e baixar log's que podem nos ajudar a res
 
 ### Algumas causas raízes possíveis de problemas na compilação dos PORTS: 
 - Você está tentando construir uma versão desatualizada do pfSense e alguns arquivos "dist" não estão mais disponíveis no [distcache oficial do FreeBSD](http://distcache.FreeBSD.org/), resultando em erros na etapa "fetch"
-   - Neste caso, você pode atualizar o [`distinfo`](https://github.com/pfsense/FreeBSD-ports/blob/devel/print/texinfo/distinfo) de cada PORTS em questão em seu fork do GitHub de "FreeBSD ports", então você pode executar "./build.sh --update-poudriere-ports" para atualizar os arquivos
-   - Alternativa, você pode encontrar qualquer espelho dist antigo como [este](http://distfiles.icmpv6.org/distfiles/)), baixar os arquivos no servidor de FreeBSD em sua pasta correspondente (usando `wget`/`curl`), e então continuar a compilação. Lembre-se, caso o mesmo dê certo, faça o upload dos arquivos no GitHub
+- Neste caso, você pode atualizar o [`distinfo`](https://github.com/pfsense/FreeBSD-ports/blob/devel/print/texinfo/distinfo) de cada PORTS em questão em seu fork do GitHub de "FreeBSD ports", então você pode executar "./build.sh --update-poudriere-ports" para atualizar os arquivos
+- Alternativa, você pode encontrar qualquer espelho dist antigo como [este](http://distfiles.icmpv6.org/distfiles/)), baixar os arquivos no servidor de FreeBSD em sua pasta correspondente (usando `wget`/`curl`), e então continuar a compilação. Lembre-se, caso o mesmo dê certo, faça o upload dos arquivos no GitHub
 
 ### Você precisa construir **TODOS** PORTS antes de prosseguir para a próxima etapa. Se não quiser criar uma PORT, você pode excluí-la removendo-a em [poudriere_bulk).](https://github.com/Christopher-YeTI/pfsense/blob/master/tools/conf/pfPorts/poudriere_bulk)
 
@@ -284,7 +284,7 @@ Comando para procurar uma palavra dentro de um arquivo no seguinte caminho:
 
 - grep -rni "pear-Auth_RADIUS@php84" /usr/local/poudriere/ports/libreSense_v2_7_3/net/
 
--------------------------------------------------------------------não consigo progredir------------------------------------------------------------------------------
+----------------------------------------------------------------não consigo progredir------------------------------------------------------------------------
 
 ### Build kernel and create ISO
 
