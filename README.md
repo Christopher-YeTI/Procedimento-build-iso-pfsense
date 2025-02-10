@@ -5,14 +5,20 @@ Este guia foi desenvolvido para funcionar com a versão RELENG_2_7_3 ou 2_7_4 n�
 Em alguns pontos do repositório pfsense, existe muitas menções à palavra "pfSense" nos códigos e isso gera uma "trava", é preciso definir um nome de produto antes de iniciarmos, vamos utilizar "libreSense".
 
 Crie uma conta no GITHUB, vamos criar um FORK dos seguintes repositórios oficiais da pfSense:
+
 [https://github.com/pfsense/pfsense](https://github.com/pfsense/pfsense.git)
+
 [https://github.com/pfsense/freebsd-ports](https://github.com/pfsense/FreeBSD-ports.git)
+
 [https://github.com/pfsense/freebsd-src](https://github.com/pfsense/FreeBSD-src.git)
+
 Para criar um FORK cliquem em:
+
 ![image](
 https://github.com/user-attachments/assets/3b35472f-6c8c-47e5-a92f-85b4023c999c)
 
 Certifique-se de que os FORK'S são completos, ou seja, não apenas a BRANCH MASTER/DEVEL(DESMARQUE "Copy the master branch only), segue exemplo:
+
 ![image](
 https://github.com/user-attachments/assets/9f883ad4-4629-4aaf-b4ba-5eeb2a658ecb)
 
