@@ -14,34 +14,36 @@ Crie uma conta no GITHUB, vamos criar um FORK dos seguintes repositórios oficia
 
 Para criar um FORK cliquem em:
 
-![image](
-https://github.com/user-attachments/assets/3b35472f-6c8c-47e5-a92f-85b4023c999c)
+![image](https://github.com/user-attachments/assets/3b35472f-6c8c-47e5-a92f-85b4023c999c)
 
 Certifique-se de que os FORK'S são completos, ou seja, não apenas a BRANCH MASTER/DEVEL(DESMARQUE "Copy the master branch only), segue exemplo:
 
-![image](
-https://github.com/user-attachments/assets/9f883ad4-4629-4aaf-b4ba-5eeb2a658ecb)
+![image](https://github.com/user-attachments/assets/9f883ad4-4629-4aaf-b4ba-5eeb2a658ecb)
 
 Vá nas configurações do GITHUB Web, na àrea de Desenvolvimento, a última opção:
-![image](
-https://github.com/user-attachments/assets/55f46ca8-08c5-4cae-9d75-c06d15b834b1)
+
+![image](https://github.com/user-attachments/assets/55f46ca8-08c5-4cae-9d75-c06d15b834b1)
+
 Vá em "tokens classic" e gere um:
-![image](
-https://github.com/user-attachments/assets/ee3cb9cb-247d-43e0-9bd6-750db349b8f5)
+
+![image](https://github.com/user-attachments/assets/ee3cb9cb-247d-43e0-9bd6-750db349b8f5)
+
 SALVE ESTA SENHA!!!
 
 Vamos editar algumas informações nos arquivos, para isso, instale o GIT https://git-scm.com/downloads, crie uma pasta na área de trabalho com o nome do seu produto, no meu caso libreSense:
-![image](
-https://github.com/user-attachments/assets/28831727-7acf-478b-b90b-3de69ce73cb3)
+
+![image](https://github.com/user-attachments/assets/28831727-7acf-478b-b90b-3de69ce73cb3)
+
 Dentro desta pasta, com o botão direito, clique em "Open GIT Bash Here":
-![image](
-https://github.com/user-attachments/assets/289cb245-55bf-405b-9c16-6ddedb1ce8c9)
-![image](
-https://github.com/user-attachments/assets/519419fa-0f9e-4c29-894e-95da60ad0e43)
+
+![image](https://github.com/user-attachments/assets/289cb245-55bf-405b-9c16-6ddedb1ce8c9)
+
+![image](https://github.com/user-attachments/assets/519419fa-0f9e-4c29-894e-95da60ad0e43)
 
 Vamos baixar os arquivos do repositório do nosso GITHUB, para pegar as informações, em nosso repositório, pegue o link de download em "code":
-![image](
-https://github.com/user-attachments/assets/a96b3498-f824-4ff4-b4ef-cd960c86ed41)
+
+![image](https://github.com/user-attachments/assets/a96b3498-f824-4ff4-b4ef-cd960c86ed41)
+
 Siga os comandos(aguarde a finalização de cada um):
 
 git clone https://github.com/Christopher-YeTI/pfsense.git
@@ -60,14 +62,17 @@ git branch RELENG_2_7_3
 git checkout RELENG_2_7_3
 Isso vai criar uma nova BRANCH em nosso repositório e com o checkout vamos mudar para ela, altere os arquivos a seguir:
 - Na pasta "/release/conf/", renomear os arquivos que comecem com "pfSense" para "libreSense"(exemplo, "pfSense_install_src.conf" => "libreSense_install_src.conf")
-![image](
-https://github.com/user-attachments/assets/2586f558-5b31-4d6c-a5f7-13cd3233947d)
+
+![image](https://github.com/user-attachments/assets/2586f558-5b31-4d6c-a5f7-13cd3233947d)
+
 - Renomeie o arquivo "/sys/amd64/conf/pfSense" to "/sys/amd64/conf/libreSense"
-![image](
-https://github.com/user-attachments/assets/16badb26-207d-41b4-9123-3df31ae51e14)
+
+![image](https://github.com/user-attachments/assets/16badb26-207d-41b4-9123-3df31ae51e14)
+
 - Edite o arquivo "/tools/tools/crypto/Makefile" removendo as palavras "cryptotest cryptostats" do comando "PROGS"
-![image](
-https://github.com/user-attachments/assets/095c1e2b-166a-4894-8612-3a4299414950)
+
+![image](https://github.com/user-attachments/assets/095c1e2b-166a-4894-8612-3a4299414950)
+
 - Execute os seguintes comandos no GIT BASH:
 git add . && git commit -m “Alterações para nova versão de compilação”
 git push origin RELENG_2_7_3
@@ -77,14 +82,17 @@ git push origin RELENG_2_7_3
 git branch RELENG_2_7_3
 git checkout RELENG_2_7_3
 - Edite o arquivo "/sysutils/pfSense-upgrade/Makefile" removendo a linha "RUN_DEPENDS+= pfSense-repoc>=0:sysutils/pfSense-repoc"
-![image](
-https://github.com/user-attachments/assets/ab78e9ee-8139-460a-99a5-79d876a3e6f6)
+
+![image](https://github.com/user-attachments/assets/ab78e9ee-8139-460a-99a5-79d876a3e6f6)
+
 - Edite o arquivo "/security/pfSense/pkg-plist" removendo todas as linhas que comecem com "%%DATADIR%%/keys"
-![image](
-https://github.com/user-attachments/assets/64d0ac1f-5cd2-4f98-9af1-f505b21073bf)
+
+![image](https://github.com/user-attachments/assets/64d0ac1f-5cd2-4f98-9af1-f505b21073bf)
+
 - Edite o arquivo "/sysutils/pfSense-repo/Makefile" alterando o "srv" para "none"
-![image](
-https://github.com/user-attachments/assets/58e1b744-6c6a-4777-a8aa-5a3fbb83af81)
+
+![image](https://github.com/user-attachments/assets/58e1b744-6c6a-4777-a8aa-5a3fbb83af81)
+
 - Edite o arquivo "/security/pfSense/Makefile"
   - Renomeie a variavel "USE_GITLAB" >> "USE_GITHUB"
   - Renomeie a variavel "GL_ACCOUNT" >> "GH_ACCOUNT" Aqui devemos informar nosso usuário do GITHUB (Christopher-YeTI)
@@ -100,31 +108,38 @@ git push origin RELENG_2_7_3
 git branch RELENG_2_7_3
 git checkout RELENG_2_7_3
 - Na pasta "/tools/templates/pkg_repos/" renomeie o arquivo "pfSense-repo.conf" to "libreSense-repo.conf"
-![image](
-https://github.com/user-attachments/assets/1e324e6d-f95c-4839-9f73-3ca8ed5c0d5b)
+
+![image](https://github.com/user-attachments/assets/1e324e6d-f95c-4839-9f73-3ca8ed5c0d5b)
+
 - Edite o arquivo "/src/etc/inc/globals.inc" altere o "product_name" para "libreSense", e "pkg_prefix" para "libreSense-pkg-"
-![image](
-https://github.com/user-attachments/assets/9e5e841c-6f01-4fcd-abea-fd23f55ba0a2)
-![image](
-https://github.com/user-attachments/assets/56695890-a2e8-4800-a932-2000d9461816)
+
+![image](https://github.com/user-attachments/assets/9e5e841c-6f01-4fcd-abea-fd23f55ba0a2)
+
+![image](https://github.com/user-attachments/assets/56695890-a2e8-4800-a932-2000d9461816)
+
 - Na pasta "/src/usr/local/share/" renomeie a pasta "pfSense" para "libreSense"
-![image](
-https://github.com/user-attachments/assets/766ae045-0cce-4ad2-9c69-d38b2ff495d9)
+
+![image](https://github.com/user-attachments/assets/766ae045-0cce-4ad2-9c69-d38b2ff495d9)
+
 - Na pasta "/src/etc/" renomeie o arquivo "pfSense-ddb.conf" e "pfSense-devd.conf" para "libreSense-ddb.conf" e "libreSense-devd.conf"
-![image](
-https://github.com/user-attachments/assets/7d1d24b8-e5fb-460f-a140-756699c3ce7e)
+
+![image](https://github.com/user-attachments/assets/7d1d24b8-e5fb-460f-a140-756699c3ce7e)
+
 - Edite o arquivo "/tools/templates/core_pkg/base/pkg-plist" removendo a linha "share/%%PRODUCT_NAME%%/initial.txz"
-![image](
-https://github.com/user-attachments/assets/eccd801c-27e4-4d1b-b782-60ad533e81c3)
+
+![image](https://github.com/user-attachments/assets/eccd801c-27e4-4d1b-b782-60ad533e81c3)
+
 - Edite o arquivo "/tools/builder_common.sh" and "/tools/builder_defaults.sh" aplicando a seguinte "correção":
 [following pull request](https://github.com/pfsense/pfsense/pull/4721) ([see how](https://www.andrewkroh.com/development/2018/01/17/testing-github-pull-requests-using-git-patches.html))
+
 Caso este documento acima não esteja mais disponível, utilize as versão do meu RELENG_2_7_2, estão com as alterações aplicadas, basta substituí-las
-![image](
-https://github.com/user-attachments/assets/89c0f3ec-0b86-41b1-8f04-88b5b82450d0)
+
+![image](https://github.com/user-attachments/assets/89c0f3ec-0b86-41b1-8f04-88b5b82450d0)
+
 - Edite o arquivo "/tools/builder_defaults.sh" Removendo "drm2" e "ndis" da varavel "MODULES_OVERRIDE_amd64"
 - Neste mesmo arquivo, altere a informação da variavel "PKG_REPO_BRANCH_RELEASE" para v_2_7_3
-![image](
-https://github.com/user-attachments/assets/644e674b-0696-410b-8107-f6d94a3d9fd2)
+
+![image](https://github.com/user-attachments/assets/644e674b-0696-410b-8107-f6d94a3d9fd2)
 
 ### Setup gamer
 - A versão de instalação que vamos tentar realizar a build é baseada no FreeBSD 15.0-RELEASE baixe a .iso do mesmo em https://download.freebsd.org/snapshots/amd64/amd64/ISO-IMAGES/15.0/ versão ADM64 disc1.iso, pode ser a mais recente
@@ -135,8 +150,8 @@ Recomendações de Hardeware:
 - 16 vCpu.
 
 Instale a versão ZFS 
-![image](
-https://github.com/user-attachments/assets/9326f3ef-44c3-4483-ad58-5ada345d2b9a)
+
+![image](https://github.com/user-attachments/assets/9326f3ef-44c3-4483-ad58-5ada345d2b9a)
 
 ### Configurando nosso FreeBSD
 Siga os comandos:
@@ -221,8 +236,8 @@ contrab utiliza "vi" para editar o arquivo, pressiona "a" para escrever, ESC par
 ### Iniciar a Build da ports
 - ./build.sh --update-pkg-repo -  Este comando vai compilar todos os ports "selecionados" para o pfSense, este procedimento pode levar cerca de 5 a 6 horas
 Para acompanharmos todo o procedimento e baixar log's que podemo nos ajudar a resolver possíveis problemas na compilação dos ports, na WEB informe o IP do seu Servidor FreeBSD
-![image](
-https://github.com/user-attachments/assets/85b6206d-f563-49f8-87ae-6c7b3169c50f)
+
+![image](https://github.com/user-attachments/assets/85b6206d-f563-49f8-87ae-6c7b3169c50f)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 In case something goes wrong: Logs files can be seen using HTTP or directly on the build server, in the folder ```/usr/local/poudriere/data/logs/bulk/```. You need to analyze the logs of each failed port to understand exactly what's the problem for each of them.
