@@ -284,7 +284,7 @@ Comando para procurar uma palavra dentro de um arquivo no seguinte caminho:
 
 - grep -rni "pear-Auth_RADIUS@php84" /usr/local/poudriere/ports/libreSense_v2_7_3/net/
 
-----------------------------------------------------------------não consigo progredir------------------------------------------------------------------------
+----------------------------------------------------------não consigo progredir---------------------------------------------------------------
 
 ### Build kernel and create ISO
 
