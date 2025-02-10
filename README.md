@@ -216,21 +216,21 @@ Com a janela iniciada daremos continuidade aos comandos:
 - rm /root/pfsense/src/usr/local/share/libreSense/keys/pkg/trusted/*
 - cp /root/sign/fingerprint src/usr/local/share/libreSense/keys/pkg/trusted/fingerprint
 - nano build.conf
-    export PRODUCT_NAME="libreSense"
-    export FREEBSD_REPO_BASE=https://github.com/Christopher-YeTI/FreeBSD-src.git
-    export POUDRIERE_PORTS_GIT_URL=https://github.com/Christopher-YeTI/FreeBSD-ports.git
-    export FREEBSD_BRANCH=RELENG_2_7_3
-    export POUDRIERE_PORTS_GIT_BRANCH=RELENG_2_7_3
-    unset USE_PKG_REPO_STAGING
-    export DEFAULT_ARCH_LIST="amd64.amd64" 
-    export PKG_REPO_SIGNING_COMMAND="/root/sign/sign.sh ${PKG_REPO_SIGN_KEY}"
-    export myIPAddress=$(ifconfig -a | grep inet | grep '.'| head -1 | cut -d ' ' -f 2)
-    export PKG_REPO_SERVER_DEVEL="http://${myIPAddress}/packages"
-    export PKG_REPO_SERVER_RELEASE="http://${myIPAddress}/packages"
-    export PKG_REPO_SERVER_STAGING="http://${myIPAddress}/packages"
-    export MIRROR_TYPE="none"
-    export POUDRIERE_PFSENSE_SRC_REPO=$(git config --get remote.origin.url|sed 's/.*\/\(.*\)\.git/\1/g'|tr '[:upper:]' '[:lower:]')
-    export SRCCONF="/root/pfsense/tmp/FreeBSD-src/release/conf/${PRODUCT_NAME}_build_src.conf"
+   - export PRODUCT_NAME="libreSense"
+   - export FREEBSD_REPO_BASE=https://github.com/Christopher-YeTI/FreeBSD-src.git
+   - export POUDRIERE_PORTS_GIT_URL=https://github.com/Christopher-YeTI/FreeBSD-ports.git
+   - export FREEBSD_BRANCH=RELENG_2_7_3
+   - export POUDRIERE_PORTS_GIT_BRANCH=RELENG_2_7_3
+   - unset USE_PKG_REPO_STAGING
+   - export DEFAULT_ARCH_LIST="amd64.amd64" 
+   - export PKG_REPO_SIGNING_COMMAND="/root/sign/sign.sh ${PKG_REPO_SIGN_KEY}"
+   - export myIPAddress=$(ifconfig -a | grep inet | grep '.'| head -1 | cut -d ' ' -f 2)
+   - export PKG_REPO_SERVER_DEVEL="http://${myIPAddress}/packages"
+   - export PKG_REPO_SERVER_RELEASE="http://${myIPAddress}/packages"
+   - export PKG_REPO_SERVER_STAGING="http://${myIPAddress}/packages"
+   - export MIRROR_TYPE="none"
+   - export POUDRIERE_PFSENSE_SRC_REPO=$(git config --get remote.origin.url|sed 's/.*\/\(.*\)\.git/\1/g'|tr '[:upper:]' '[:lower:]')
+   - export SRCCONF="/root/pfsense/tmp/FreeBSD-src/release/conf/${PRODUCT_NAME}_build_src.conf"
 - chmod +x build.sh
 - crontab -e
      * * * * * cp -R /usr/local/poudriere/data/logs/bulk/libreSense_v2_7_3_amd64-libreSense_v2_7_3/* /usr/local/www/nginx/poudriere-build/
