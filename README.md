@@ -266,7 +266,7 @@ Para acompanharmos todo o procedimento e baixar log's que podem nos ajudar a res
 
 ### Você precisa construir **TODOS** PORTS antes de prosseguir para a próxima etapa. Se não quiser criar uma PORT, você pode excluí-la removendo-a em [poudriere_bulk).](https://github.com/Christopher-YeTI/pfsense/blob/master/tools/conf/pfPorts/poudriere_bulk)
 
--------------------------------------------------------------------não consigui progredir-----------------------------------------------------------------------------------
+-------------------------------------------------------------------não consigo progredir------------------------------------------------------------------------------
 
 ### Build kernel and create ISO
 
