@@ -234,6 +234,9 @@ Com a janela iniciada daremos continuidade aos comandos:
 - chmod +x build.sh
 - crontab -e
      * * * * * cp -R /usr/local/poudriere/data/logs/bulk/libreSense_v2_7_3_amd64-libreSense_v2_7_3/* /usr/local/www/nginx/poudriere-build/
+
+![image](https://github.com/user-attachments/assets/9e1a27b1-0087-427e-990b-685719689d02)
+
 contrab utiliza "vi" para editar o arquivo, pressiona "a" para escrever, ESC para sair da escrita : wq enter para salvar e sair
 - service cron start
 - cron_enable="YES"
@@ -247,17 +250,24 @@ Para acompanharmos todo o procedimento e baixar log's que podemo nos ajudar a re
 
 ![image](https://github.com/user-attachments/assets/85b6206d-f563-49f8-87ae-6c7b3169c50f)
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-In case something goes wrong: Logs files can be seen using HTTP or directly on the build server, in the folder ```/usr/local/poudriere/data/logs/bulk/```. You need to analyze the logs of each failed port to understand exactly what's the problem for each of them.
+Podemos acompanhar todo o progresso dos PORTS acessando na WEB o IP do nosso FreeBSD http://192.168.15.163/
 
-Few possible root causes: 
-- The `FreeBSD-port` branch that you are trying to build does not match the FreeBSD version of your build server.
-- You are trying to build an out-of-date version of pfSense and some `dist` files are not available anymore on the [official FreeBSD distcache](http://distcache.FreeBSD.org/), resulting in errors at the `fetch` step. 
-   - In this case you can update the [`distinfo`](https://github.com/pfsense/FreeBSD-ports/blob/devel/print/texinfo/distinfo) of each concerned port in your GitHub fork of `FreeBSD ports`, then you can run `./build.sh --update-poudriere-ports` to refresh the files on your build server. 
-   - Alternatively, you can find any old dist mirror (such as [this one](http://distfiles.icmpv6.org/distfiles/)), download the files on the build server in their matching folder (using `wget`/`curl`), then continue the build
+![image](https://github.com/user-attachments/assets/9f542143-8e9e-4d82-9d8b-2e5ecac3eca3)
 
-You need to build **ALL** ports before proceeding to the next step. If you don't want to build one port, you can exclude it by removing it in [poudriere_bulk](https://github.com/pfsense/pfsense/blob/master/tools/conf/pfPorts/poudriere_bulk).
+![image](https://github.com/user-attachments/assets/34dc52d6-072d-4d6b-aa93-55c08db9b7b4)
 
+![image](https://github.com/user-attachments/assets/78efb47a-3255-4c2b-a925-57867e77a7a5)
+
+Ao navegar nos log's conseguimos identificar os PORTS com erros e baixar os log's para trata-los
+
+### Algumas causas raízes possíveis de problemas na compilação dos PORTS: 
+- Você está tentando construir uma versão desatualizada do pfSense e alguns arquivos "dist" não estão mais disponíveis no [distcache oficial do FreeBSD](http://distcache.FreeBSD.org/), resultando em erros na etapa "fetch"
+   - Neste caso, você pode atualizar o [`distinfo`](https://github.com/pfsense/FreeBSD-ports/blob/devel/print/texinfo/distinfo) de cada PORTS em questão em seu fork do GitHub de "FreeBSD ports", então você pode executar "./build.sh --update-poudriere-ports" para atualizar os arquivos
+   - Alternativa, você pode encontrar qualquer espelho dist antigo como [este](http://distfiles.icmpv6.org/distfiles/)), baixar os arquivos no servidor de FreeBSD em sua pasta correspondente (usando `wget`/`curl`), e então continuar a compilação. Lembre-se, caso o mesmo dê certo, faça o upload dos arquivos no GitHub
+
+### Você precisa construir **TODOS** PORTS antes de prosseguir para a próxima etapa. Se não quiser criar uma PORT, você pode excluí-la removendo-a em [poudriere_bulk).](https://github.com/Christopher-YeTI/pfsense/blob/master/tools/conf/pfPorts/poudriere_bulk)
+
+-------------------------------------------------------------------não consigui progredir-----------------------------------------------------------------------------------
 
 ### Build kernel and create ISO
 
