@@ -180,16 +180,27 @@ Siga os comandos:
     # service sshd restart
 
 Utilizando uma conexão SSH execute os seguintes comandos:
+
     # freebsd-update fetch
+
     # freebsd-update install
+
     # pkg install -y pkg vim nano emacs git nginx poudriere-devel rsync sudo vmdktool curl qemu-user-static gtar xmlstarlet pkgconf openssl portsnap htop screen wget mmv open-vm-tools py311-gdbm py311-sqlite3 py311-tkinter python3 unbound cmake llvm libffi pkgconf 
+    
     # mkdir -p /var/db/portsnap
+    
     # portsnap fetch extract
+
     # dd if=/dev/zero of=/root/swap.bin bs=1M count=16384
+
     # chmod 0600 /root/swap.bin
+    
     # mdconfig -a -t vnode -f /root/swap.bin -u 0 
+    
     # echo 'swapfile="/root/swap.bin"' >> /etc/rc.conf
+    
     # swapon /dev/md0
+    
     # nano /etc/make.conf
 
 Informações:
@@ -201,8 +212,11 @@ Para salvar com o editor "nano" pressione CTRL+o, enter para salvar e para sair 
 Editor "vi" pressiona "a" para iniciar as escritas, ESC para sair da escrita, pressione ":" "wq" e enter para sair e salvar
 
 Vamos utilizar "janela" chamadas de "Screen", se o acesso via SSH for encerrado de forma inesperada, os comandos em execução não serão perdidos:
+
     # screen -S build
+    
     # screen -ls
+
     # sceen -r xxxx 
 
 Com a janela iniciada daremos continuidade aos comandos:
