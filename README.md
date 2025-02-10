@@ -231,6 +231,9 @@ Com a janela iniciada daremos continuidade aos comandos:
    - export MIRROR_TYPE="none"
    - export POUDRIERE_PFSENSE_SRC_REPO=$(git config --get remote.origin.url|sed 's/.*\/\(.*\)\.git/\1/g'|tr '[:upper:]' '[:lower:]')
    - export SRCCONF="/root/pfsense/tmp/FreeBSD-src/release/conf/${PRODUCT_NAME}_build_src.conf"
+
+![image](https://github.com/user-attachments/assets/55e66c8c-47ae-4f8b-8b67-84b193f3c33e)
+
 - chmod +x build.sh
 - crontab -e
      * * * * * cp -R /usr/local/poudriere/data/logs/bulk/libreSense_v2_7_3_amd64-libreSense_v2_7_3/* /usr/local/www/nginx/poudriere-build/
