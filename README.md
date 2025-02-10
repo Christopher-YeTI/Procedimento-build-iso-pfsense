@@ -47,15 +47,12 @@ Vamos baixar os arquivos do repositório do nosso GITHUB, para pegar as informa�
 Siga os comandos(aguarde a finalização de cada um):
 
 - git clone https://github.com/Christopher-YeTI/pfsense.git
-
 - git clone https://github.com/Christopher-YeTI/FreeBSD-ports.git
-
 - git clone https://github.com/Christopher-YeTI/FreeBSD-src.git
 
 Agora vamos realizar o login da nossa conta do GITHUB em nosso BASH com os seguintes comandos:
 
 - git config --global user.name "Christopher-YeTI"
-
 - git config --global user.email christopher@yeti.tec.br
 
 se for solicitando uma senha, informe a key gerada no GITHUB Web.
@@ -66,7 +63,6 @@ se for solicitando uma senha, informe a key gerada no GITHUB Web.
 Dentro da pasta Desktop\libreSense\FreeBSD-src\ execute o GIT Bash, em seguida os comandos:
 
 - git branch RELENG_2_7_3
-
 - git checkout RELENG_2_7_3
 
 Isso vai criar uma nova BRANCH em nosso repositório e com o checkout vamos mudar para ela, altere os arquivos a seguir:
@@ -85,14 +81,12 @@ Edite o arquivo "/tools/tools/crypto/Makefile" removendo as palavras "cryptotest
 Execute os seguintes comandos no GIT BASH:
 
 - git add . && git commit -m “Alterações para nova versão de compilação”
-
 - git push origin RELENG_2_7_3
 
 ### FreeBSD Ports
 Dentro da pasta Desktop\libreSense\FreeBSD-ports\ execute o GIT Bash, em seguida os comandos:
 
 - git branch RELENG_2_7_3
-
 - git checkout RELENG_2_7_3
 
 Edite o arquivo "/sysutils/pfSense-upgrade/Makefile" removendo a linha "RUN_DEPENDS+= pfSense-repoc>=0:sysutils/pfSense-repoc"
@@ -117,14 +111,12 @@ Edite o arquivo "/security/pfSense/Makefile"
 Execute os seguintes comandos no GIT BASH:
 
 - git add . && git commit -m “Alterações para nova versão de compilação”
-
 - git push origin RELENG_2_7_3
 
 ### pfSense GUI
 Dentro da pasta Desktop\libreSense\pfSense\ execute o GIT Bash, em seguida os comandos:
 
 - git branch RELENG_2_7_3
-
 - git checkout RELENG_2_7_3
 
 Na pasta "/tools/templates/pkg_repos/" renomeie o arquivo "pfSense-repo.conf" to "libreSense-repo.conf"
@@ -182,25 +174,15 @@ Siga os comandos:
 Utilizando uma conexão SSH execute os seguintes comandos:
 
 - freebsd-update fetch
-
 - freebsd-update install
-
 - pkg install -y pkg vim nano emacs git nginx poudriere-devel rsync sudo vmdktool curl qemu-user-static gtar xmlstarlet pkgconf openssl portsnap htop screen wget mmv open-vm-tools py311-gdbm py311-sqlite3 py311-tkinter python3 unbound cmake llvm libffi pkgconf 
-    
 - mkdir -p /var/db/portsnap
-    
 - portsnap fetch extract
-
 - dd if=/dev/zero of=/root/swap.bin bs=1M count=16384
-
-- chmod 0600 /root/swap.bin
-    
-- mdconfig -a -t vnode -f /root/swap.bin -u 0 
-    
-- echo 'swapfile="/root/swap.bin"' >> /etc/rc.conf
-    
-- swapon /dev/md0
-    
+- chmod 0600 /root/swap.bin 
+- mdconfig -a -t vnode -f /root/swap.bin -u 0   
+- echo 'swapfile="/root/swap.bin"' >> /etc/rc.conf 
+- swapon /dev/md0  
 - nano /etc/make.conf
 
 Informações:
@@ -214,9 +196,7 @@ Editor "vi" pressiona "a" para iniciar as escritas, ESC para sair da escrita, pr
 Vamos utilizar "janela" chamadas de "Screen", se o acesso via SSH for encerrado de forma inesperada, os comandos em execução não serão perdidos:
 
 - screen -S build
-    
 - screen -ls
-
 - sceen -r xxxx 
 
 Com a janela iniciada daremos continuidade aos comandos:
