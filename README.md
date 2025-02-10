@@ -178,9 +178,11 @@ Utilizando uma conexão SSH execute os seguintes comandos:
 - echo 'swapfile="/root/swap.bin"' >> /etc/rc.conf
 - swapon /dev/md0
 - nano /etc/make.conf - informações para conter no arquivo:
+
     DEFAULT_VERSIONS+=ssl=libressl
     DEFAULT_VERSIONS+=ssl=openssl
     DEFAULT_VERSIONS+=perl5=5.36
+
 Para salvar com o editor "nano" pressione CTRL+o, enter para salvar e para sair CTRL+x
 Editor "vi" pressiona "a" para iniciar as escritas, ESC para sair da escrita, pressione ":" "wq" e enter para sair e salvar
 
