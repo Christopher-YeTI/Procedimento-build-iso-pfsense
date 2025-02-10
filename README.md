@@ -47,7 +47,9 @@ Vamos baixar os arquivos do repositório do nosso GITHUB, para pegar as informa�
 Siga os comandos(aguarde a finalização de cada um):
 
 git clone https://github.com/Christopher-YeTI/pfsense.git
+
 git clone https://github.com/Christopher-YeTI/FreeBSD-ports.git
+
 git clone https://github.com/Christopher-YeTI/FreeBSD-src.git
 
 Agora vamos realizar o login da nossa conta do GITHUB em nosso BASH com os seguintes comandos:
