@@ -186,8 +186,11 @@ Utilizando uma conexão SSH execute os seguintes comandos:
 - nano /etc/make.conf
 
 Informações:
+
             DEFAULT_VERSIONS+=ssl=libressl
+
             DEFAULT_VERSIONS+=ssl=openssl
+
             DEFAULT_VERSIONS+=perl5=5.36
 
 Para salvar com o editor "nano" pressione CTRL+o, enter para salvar e para sair CTRL+x
