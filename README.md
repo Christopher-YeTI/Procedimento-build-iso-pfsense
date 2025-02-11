@@ -264,10 +264,10 @@ Agora precisamos editar um arquivo no FreeBSD "/usr/local/poudriere/ports/libreS
 
 ![image](https://github.com/user-attachments/assets/7ff05bd7-96fa-419a-b124-d672e9f2b2ec)
 
-### Obs: durante as alterações, notei que a BRANCH MASTER, possui alguns arquivos a mais do que as RELENG, isso afeta durante o proximo passa, então foi preciso clonar a MASTER, clonar a RELENG, copiar os arquivos da MASTER, sobrescrever os da RELENG, depois alterar o que era necessário. Então a nossa versão RELENG_2_7_3 já está com todos os arquivos que estavam faltando. 
+### Obs: notei que a BRANCH MASTER do pfsense, possui alguns arquivos a mais do que as RELENG_2_7_3, isso afeta a proxima etapa, então é preciso clonar a MASTER, clonar a RELENG_2_7_3, copiar os arquivos da MASTER, sobrescrever os da RELENG_2_7_3, depois alterar os arquivos da RELENG_2_7_3 com base nas informações do começo deste tutorial, dar o push e pegar o HASH gerado para informar no arquivo acima. A nossa versão RELENG_2_7_3 já está com todos os arquivos que estavam faltando. 
 
 ### Iniciar a Build da ports
-- ./build.sh --update-pkg-repo -  Este comando vai compilar todos os ports "selecionados" para o pfSense, este procedimento pode levar cerca de 5 a 6 horas
+- ./build.sh --update-pkg-repo - Este comando vai compilar todos os ports "selecionados" para o pfSense, este procedimento pode levar cerca de 5 a 6 horas
 Para acompanharmos todo o procedimento e baixar log's que podem nos ajudar a resolver possíveis problemas na compilação dos ports, na WEB informe o IP do seu Servidor FreeBSD http://192.168.15.163/
 
 ![image](https://github.com/user-attachments/assets/9f542143-8e9e-4d82-9d8b-2e5ecac3eca3)
@@ -294,7 +294,7 @@ Comando para procurar uma palavra dentro de um arquivo no seguinte caminho:
 - grep -rni "pear-Auth_RADIUS@php84" /usr/local/poudriere/ports/libreSense_v2_7_3/net/
 
 ### Construindo o Kernel e a ISO
- Finally, you can build your customized firewall: `./build.sh --skip-final-rsync iso`. This command will build the kernel, then install ports on top of it and create the ISO file. Expect the command to run for ~one hour.
+- ./build.sh --skip-final-rsync iso - Este comando vai finalmente construir o Kernel e criar a .ISO, levando cerca de 1 a 2 horas.
  
 The build can the monitored from the two files in the `logs/` directory of pfSense GUI: 
 - `buildworld.amd64`, `installworld.amd64` and `kernel.libreSense.amd64.log` will contain logs relative to the build of FreeBSD kernel.
@@ -316,29 +316,3 @@ The same applies for the content of `FreeBSD-src`. The recommended way to fix th
 
 Also, Netgate has been accused of [performing *delayed open-sourcing*](https://github.com/doktornotor/pfsense-still-closedsource/blob/master/img/screenshot_bug8155_rebuilding_pfsense_kernel.png) in the past on `Freebsd-src`. It is unclear if it was due to users misunderstanding on how the build system works, due to Netgate shady practices, or due to a temporary maintenance. 
 I haven't noticed any *delayed open sourcing* myself, but if that ever happens, you can merge FreeBSD sources with your branch directly.
-
-
-# Differences between a genuine pfSense and your ISO
-
-Your ISO is built the same way as pfSense ISO distributed by Netgate, and does contain the same code, with two major differences: your ISO does not include GNID nor pfSense-repoc.
-
-## GNID
-
-GNID is a binary (located at `/usr/sbin/gnid`) which is managing Netgate license for pfSense. This binary basically generates a unique Netgate ID for each genuine pfSense. 
-
-The generated unique ID then become part of the default "User-Agent" when making HTTP requests with PHP (HTTP requests are used for fetching bogons, installing packages, displaying the first copyright message...etc). 
-
-It is also required for accessing Netgate services on pfSense (such as ACB, or professional support)
-
-How does this binary works is known *(a quick look to this binary with `radare2` show that it basically tries to fetch the platform it is running on, and if the platform is not Netgate hardware then it computes an ID using sha256 and MAC addresses of the device)*, but this program is property of Netgate and is closed-source (it is stored in the internal GitLab of Netgate). 
-
-## pfSense-repoc
-
-pfSense-repoc is a package containing multiple binaries. These binaries are in charge of configuring the right PKG repositories, depending on your licence and product (pfSense-CE, plus, etc..).
-
-Like GNID, this package is property of Netgate and is closed-source.
-
-
-Because your ISO does not contain pfSense-repoc nor GNID, you may not be able to retrieve bogons feed from Netgate, to use ACB, to install packages from official repositories or to ask for professional support to Netgate.
-You also won't receive latest pfSense updates (which makes sense, since your ISO can't be called *pfSense software*..).
-
