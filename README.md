@@ -296,23 +296,23 @@ Comando para procurar uma palavra dentro de um arquivo no seguinte caminho:
 ### Construindo o Kernel e a ISO
 - ./build.sh --skip-final-rsync iso - Este comando vai finalmente construir o Kernel e criar a .ISO, levando cerca de 1 a 2 horas.
  
-The build can the monitored from the two files in the `logs/` directory of pfSense GUI: 
-- `buildworld.amd64`, `installworld.amd64` and `kernel.libreSense.amd64.log` will contain logs relative to the build of FreeBSD kernel.
-- `install_pkg_install_ports.txt` contain logs relative to the installation of the ports. They are retrieved from the URL specified in the `build.conf` file.
-- `isoimage.amd64` and `cloning.amd64.log` contain logs relative to the build of the ISO itself
+A compilação pode ser monitorada a partir de dois arquivos no diretório `logs/` da GUI do pfSense: 
+- `buildworld.amd64`, `installworld.amd64` e `kernel.libreSense.amd64.log` conterão logs relativos à construção do kernel do FreeBSD.
+- `install_pkg_install_ports.txt` contém logs relativos à instalação das portas. Eles são recuperados da URL especificada no arquivo `build.conf`.
+- `isoimage.amd64` e `cloning.amd64.log` contêm logs relativos à construção do próprio ISO
 
-At the end of the build, a compressed iso file (`.iso.gz`) will be present in `~pfsense/tmp/${product_name}/installer/`. You can extract it using `gunzip *.gz` if you need the plain `.iso`.
+No final da compilação, um arquivo iso compactado (`.iso.gz`) estará presente em `~pfsense/tmp/${product_name}/installer/`. Você pode extraí-lo usando `gunzip *.gz` se precisar do `.iso` simples.
 
-### If your encounter errors during ports or kernel build: possible root causes, and how to fix them:
+### Se você encontrar erros durante ports ou build do kernel: possíveis causas raiz e como corrigi-los:
 
-One very possible root cause to why your build is failing, is related to how `Makefile` system works correlated with an unlucky timing. What happens is usually close to the following: 
+Uma causa raiz muito possível para o motivo pelo qual seu build está falhando está relacionada a como o sistema `Makefile` funciona correlacionado a um momento azarado. O que acontece geralmente é próximo ao seguinte:
 
-1. Netgate build port XXX from `FreeBSD-ports`. On internal Netgate servers, poudriere marks the port as built and won't attempt to re-build it unless an update is made on the code ("config bump")
-3. Few months later, ports owners update their build requirement (`distfile` update) / Netgate update its build environment (e.g., `openssl => opensll111` )
-2. Netgate does NOT keep `FreeBSD-ports` in sync with the official FreeBSD ports repository. At this point, any attempt of rebuilding ports will fail...But it is fine for Netgate : the built packages are already there, and no rebuild will be made as long as no config bump is done on the ports. 
-4. When you try to build ports yourself, some ports fail during build and you don't understand why.
+1. Netgate build port XXX de `FreeBSD-ports`. Em servidores Netgate internos, o poudriere marca o port como construído e não tentará reconstruí-lo a menos que uma atualização seja feita no código ("config bump")
+3. Poucos meses depois, os proprietários de ports atualizam seus requisitos de build (atualização `distfile`) / Netgate atualiza seu ambiente de build (por exemplo, `openssl => opensll111` )
+2. Netgate NÃO mantém `FreeBSD-ports` em sincronia com o repositório oficial de ports do FreeBSD. Neste ponto, qualquer tentativa de reconstruir portas falhará... Mas está tudo bem para o Netgate: os pacotes construídos já estão lá, e nenhuma reconstrução será feita enquanto nenhuma alteração de configuração for feita nas portas.
+4. Quando você tenta construir portas sozinho, algumas portas falham durante a construção e você não entende o porquê.
 
-The same applies for the content of `FreeBSD-src`. The recommended way to fix this issue is to simply re-synchronize modules that are failing with upstream, so that you will have an up-to-date ISO.
+O mesmo se aplica ao conteúdo de `FreeBSD-src`. A maneira recomendada de corrigir esse problema é simplesmente ressincronizar os módulos que estão falhando com o upstream, para que você tenha um ISO atualizado.
 
-Also, Netgate has been accused of [performing *delayed open-sourcing*](https://github.com/doktornotor/pfsense-still-closedsource/blob/master/img/screenshot_bug8155_rebuilding_pfsense_kernel.png) in the past on `Freebsd-src`. It is unclear if it was due to users misunderstanding on how the build system works, due to Netgate shady practices, or due to a temporary maintenance. 
-I haven't noticed any *delayed open sourcing* myself, but if that ever happens, you can merge FreeBSD sources with your branch directly.
+Além disso, o Netgate foi acusado de [realizar *open-sourcing atrasado*](https://github.com/doktornotor/pfsense-still-closedsource/blob/master/img/screenshot_bug8155_rebuilding_pfsense_kernel.png) no passado em `Freebsd-src`. Não está claro se foi devido ao mal-entendido dos usuários sobre como o sistema de construção funciona, devido a práticas obscuras do Netgate ou devido a uma manutenção temporária.
+Eu mesmo não notei nenhum *atraso no código aberto*, mas se isso acontecer, você pode mesclar fontes do FreeBSD com sua ramificação diretamente.
