@@ -260,6 +260,12 @@ contrab utiliza "vi" para editar o arquivo, pressiona "a" para escrever, ESC par
 ### Iniciar a preparação dos arquivos buildWorld
 - ./build.sh --setup-poudriere - Este procedimento pode levar de 3 a 4 horas, é possível acompanhar o log em "/root/pfsense/logs/poudriere.log"
 
+Agora precisamos editar um arquivo no FreeBSD "/usr/local/poudriere/ports/libreSense_v2_7_3/security/libreSense/Makefile" altere as informações de "GH_TAGNAME=" aqui é preciso informar o HASH do último push que realizamos no RELENG_2_7_3:
+
+![image](https://github.com/user-attachments/assets/7ff05bd7-96fa-419a-b124-d672e9f2b2ec)
+
+### Obs: durante as alterações, notei que a BRANCH MASTER, possui alguns arquivos a mais do que as RELENG, isso afeta durante o proximo passa, então foi preciso clonar a MASTER, clonar a RELENG, copiar os arquivos da MASTER, sobrescrever os da RELENG, depois alterar o que era necessário. Então a nossa versão RELENG_2_7_3 já está com todos os arquivos que estavam faltando. 
+
 ### Iniciar a Build da ports
 - ./build.sh --update-pkg-repo -  Este comando vai compilar todos os ports "selecionados" para o pfSense, este procedimento pode levar cerca de 5 a 6 horas
 Para acompanharmos todo o procedimento e baixar log's que podem nos ajudar a resolver possíveis problemas na compilação dos ports, na WEB informe o IP do seu Servidor FreeBSD http://192.168.15.163/
@@ -277,7 +283,7 @@ Para acompanharmos todo o procedimento e baixar log's que podem nos ajudar a res
 - Neste caso, você pode atualizar o [`distinfo`](https://github.com/pfsense/FreeBSD-ports/blob/devel/print/texinfo/distinfo) de cada PORTS em questão em seu fork do GitHub de "FreeBSD ports", então você pode executar "./build.sh --update-poudriere-ports" para atualizar os arquivos
 - Alternativa, você pode encontrar qualquer espelho dist antigo como [este](http://distfiles.icmpv6.org/distfiles/)), baixar os arquivos no servidor de FreeBSD em sua pasta correspondente (usando `wget`/`curl`), e então continuar a compilação. Lembre-se, caso o mesmo dê certo, faça o upload dos arquivos no GitHub
 
-### Você precisa construir **TODOS** PORTS antes de prosseguir para a próxima etapa. Se não quiser criar uma PORT, você pode excluí-la removendo-a em [poudriere_bulk).](https://github.com/Christopher-YeTI/pfsense/blob/master/tools/conf/pfPorts/poudriere_bulk)
+### Você precisa construir **TODOS** PORTS antes de prosseguir para a próxima etapa. Se não quiser criar uma PORT, você pode excluí-la removendo-a em [poudriere_bulk).](https://github.com/Christopher-YeTI/pfsense/blob/master/tools/conf/pfPorts/poudriere_bulk) NÃO RECOMENDO REMOVER NENHUM, O CORRETO É CORRIGIR O QUE FOR NECESSÁRIO, E PARA ISSO, SE UM PORT TEM PROBLEMA NA COMPILAÇÃO, PROCURE PELOS ARQUIVOS DO PORT, NA PASTA DELE, EXECUTE O COMANDO "MAKE" E RESOLVA OS PROBLEMAS.
 
 Comando para procurar determinado arquivo contento a informação no nome:
 
@@ -287,10 +293,7 @@ Comando para procurar uma palavra dentro de um arquivo no seguinte caminho:
 
 - grep -rni "pear-Auth_RADIUS@php84" /usr/local/poudriere/ports/libreSense_v2_7_3/net/
 
-----------------------------------------------------------não consigo progredir---------------------------------------------------------------
-
-### Build kernel and create ISO
-
+### Construindo o Kernel e a ISO
  Finally, you can build your customized firewall: `./build.sh --skip-final-rsync iso`. This command will build the kernel, then install ports on top of it and create the ISO file. Expect the command to run for ~one hour.
  
 The build can the monitored from the two files in the `logs/` directory of pfSense GUI: 
