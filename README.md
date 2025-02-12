@@ -295,6 +295,19 @@ Comando para procurar uma palavra dentro de um arquivo no seguinte caminho:
 
 ### Construindo o Kernel e a ISO
 - ./build.sh --skip-final-rsync iso - Este comando vai finalmente construir o Kernel e criar a .ISO, levando cerca de 1 a 2 horas.
+
+
+
+
+com menos de 15 minutos de build do kernel já tivemos erro relacioado a bibliteca /root/pfsense/tmp/FreeBSD-src/lib/libc/iconv/ com base nas informações coletadas existe uma variavel booleana não definida, por mais que a gente defina ela, o problema não resolve, com isso, decidi realizar um procedimento de make na pasta cd /root/pfsense/tmp/FreeBSD-src && make cleanworld && make buildworld... talvez tenhamos algum retorno mais "valido" 
+tem uma páginainformando sobre este problema: https://www.freebsd.org/security/advisories/FreeBSD-EN-15:17.libc.asc talvez seja um problema com a versão 15.0-current? 
+
+
+
+
+
+
+
  
 A compilação pode ser monitorada a partir de dois arquivos no diretório `logs/` da GUI do pfSense: 
 - `buildworld.amd64`, `installworld.amd64` e `kernel.libreSense.amd64.log` conterão logs relativos à construção do kernel do FreeBSD.
