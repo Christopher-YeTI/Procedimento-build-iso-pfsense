@@ -296,7 +296,7 @@ Comando para procurar uma palavra dentro de um arquivo no seguinte caminho:
 ### Construindo o Kernel e a ISO
 - ./build.sh --skip-final-rsync iso - Este comando vai finalmente construir o Kernel e criar a .ISO, levando cerca de 1 a 2 horas.
 
-
+Neste processo, foi detectado inúmeros erros com as variavéis de ambiente no FreeBSD-src, é preciso analisar com calma todas as variaveis e sempre defini-las no inicio do código ao arquivo que ela é dependente.
 
 
 
