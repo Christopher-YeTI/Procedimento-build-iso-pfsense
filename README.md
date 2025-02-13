@@ -175,7 +175,7 @@ Utilizando uma conexão SSH execute os seguintes comandos:
 
 - freebsd-update fetch
 - freebsd-update install
-- pkg install -y pkg vim nano emacs git nginx poudriere-devel rsync sudo vmdktool curl qemu-user-static gtar xmlstarlet pkgconf openssl portsnap htop screen wget mmv open-vm-tools py311-gdbm py311-sqlite3 py311-tkinter python3 unbound cmake llvm libffi pkgconf krb5 heimdal
+- pkg install -y pkg vim nano emacs git nginx poudriere-devel rsync sudo vmdktool curl qemu-user-static gtar xmlstarlet pkgconf openssl portsnap htop screen wget mmv open-vm-tools py311-gdbm py311-sqlite3 py311-tkinter python3 unbound cmake llvm libffi pkgconf krb5 heimdal gettext
 - mkdir -p /var/db/portsnap
 - portsnap fetch extract
 - dd if=/dev/zero of=/root/swap.bin bs=1M count=16384
