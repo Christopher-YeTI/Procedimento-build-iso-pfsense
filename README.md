@@ -298,6 +298,8 @@ Comando para procurar uma palavra dentro de um arquivo no seguinte caminho:
 
 Neste processo, foi detectado inúmeros erros com as variavéis de ambiente no FreeBSD-src, é preciso analisar com calma todas as variaveis e sempre defini-las no inicio do código ao arquivo que ela é dependente.
 
+- pkg delete -f libucl - Talvez seja necessário caso tenha alertas informando sobre o problema de compilação informar 3 resultados e esperar por 4.
+- 
 
 
 
