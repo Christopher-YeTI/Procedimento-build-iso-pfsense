@@ -299,8 +299,6 @@ Comando para procurar uma palavra dentro de um arquivo no seguinte caminho:
 
 
 
-com menos de 15 minutos de build do kernel já tivemos erro relacioado a bibliteca /root/pfsense/tmp/FreeBSD-src/lib/libc/iconv/ com base nas informações coletadas existe uma variavel booleana não definida, por mais que a gente defina ela, o problema não resolve, com isso, decidi realizar um procedimento de make na pasta cd /root/pfsense/tmp/FreeBSD-src && make cleanworld && make buildworld... talvez tenhamos algum retorno mais "valido" 
-tem uma páginainformando sobre este problema: https://www.freebsd.org/security/advisories/FreeBSD-EN-15:17.libc.asc talvez seja um problema com a versão 15.0-current? 
 
 
 
