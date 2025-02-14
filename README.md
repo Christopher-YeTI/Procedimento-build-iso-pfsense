@@ -176,6 +176,18 @@ Utilizando uma conexão SSH execute os seguintes comandos:
 - freebsd-update fetch
 - freebsd-update install
 - pkg install -y pkg vim nano emacs git nginx poudriere-devel rsync sudo vmdktool curl qemu-user-static gtar xmlstarlet pkgconf openssl portsnap htop screen wget mmv open-vm-tools py311-gdbm py311-sqlite3 py311-tkinter python3 unbound cmake llvm libffi pkgconf krb5 heimdal gettext libintl
+- pkg delete -f gettext gettext-runtime gettext-tools
+- fetch https://ftp.gnu.org/pub/gnu/gettext/gettext-0.22.tar.gz (caso não esteja disponivel, localize em nosso repositório RELENG_2_7_3\FreeBSD-src\mão-na-roda\...)
+- tar -xvzf gettext-0.22.tar.gz
+- cd gettext-0.22
+- ./configure --prefix=/usr/local
+- make install
+- gettext --version
+- fetch https://www.openssl.org/source/openssl-1.1.1w.tar.gz (RELENG_2_7_3\Freebsd-src\mão-na-roda\...)
+- tar -xvzf openssl-1.1.1w.tar.gz
+- cd openssl-1.1.1w
+- ./config --prefix=/usr/local/openssl11 --openssldir=/usr/local/openssl11 shared zlib
+- make install
 - mkdir -p /var/db/portsnap
 - portsnap fetch extract
 - dd if=/dev/zero of=/root/swap.bin bs=1M count=16384
