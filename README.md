@@ -255,6 +255,8 @@ Com a janela iniciada daremos continuidade aos comandos:
 - chmod +x build.sh
 - crontab -e
      * * * * * cp -R /usr/local/poudriere/data/logs/bulk/libreSense_v2_7_3_amd64-libreSense_v2_7_3/* /usr/local/www/nginx/poudriere-build/
+- pkg update -f
+- pkg upgrade -f
 
 ![image](https://github.com/user-attachments/assets/9e1a27b1-0087-427e-990b-685719689d02)
 
