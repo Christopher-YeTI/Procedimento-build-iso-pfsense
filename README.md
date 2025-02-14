@@ -294,12 +294,15 @@ Comando para procurar uma palavra dentro de um arquivo no seguinte caminho:
 - grep -rni "pear-Auth_RADIUS@php84" /usr/local/poudriere/ports/libreSense_v2_7_3/net/
 
 ### Construindo o Kernel e a ISO
-- ./build.sh --skip-final-rsync iso - Este comando vai finalmente construir o Kernel e criar a .ISO, levando cerca de x... horas.
+- ./build.sh --skip-final-rsync iso - Este comando vai finalmente construir o Kernel e criar a .ISO, levando cerca de 8 horas(sem erros).
 
-Neste processo, foi detectado inúmeros erros com as variavéis de ambiente no FreeBSD-src, é preciso analisar com calma todas as variaveis e sempre defini-las no inicio do código ao arquivo que ela é dependente.
+![image](https://github.com/user-attachments/assets/12b5d092-c88c-4765-b0bb-3621d860dc6f)
+
+Cada Stage passa por um preciso de verificação de código de cada arquivo, e isso pode gerar inúmeros erros, analise os erros inidicados e corrija. Tem tanto problema e erro no estágio 4.1 e 4.2 que só Deus na causa...
 
 - pkg delete -f libucl - Talvez seja necessário caso tenha alertas informando sobre o problema de compilação informar 3 resultados e esperar por 4.
-- 
+
+
 
 
 
